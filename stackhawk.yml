@@ -1,0 +1,38 @@
+# -- stackhawk configuration for testapp --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: 8bca0194-4caf-441b-94fe-6c0c3c06b8e5 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Development # (required)
+  # -- The url of your application to scan --
+  host: http://testapp.nftplatform.org # (required)
+
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
+
+hawk:
+  spider:
+    ajax: true
+    base: true
+
+app:
+  applicationId: 8bca0194-4caf-441b-94fe-6c0c3c06b8e5
+  env: pull_request
+  host: http://localhost:3000
+tags:
+  - name: _STACKHAWK_GIT_COMMIT_SHA
+    value: ${COMMIT_SHA}
+  - name: _STACKHAWK_GIT_BRANCH
+    value: ${BRANCH_NAME}
+hawk:
+  # Add this if you want pull request comments to specifically call out findings at or above a failure threshold.
+  failureThreshold: high
